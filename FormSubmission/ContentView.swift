@@ -8,17 +8,20 @@
 import SwiftUI
 
 struct ContentView: View {
+    
+    @StateObject private var viewModel = FormViewModel()
+    
     var body: some View {
-        VStack {
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundStyle(.tint)
-            Text("Hello, world!")
+        NavigationView {
+            HomeView()
         }
-        .padding()
+        .onAppear {
+            viewModel.loadFormData() 
+        }
     }
 }
 
 #Preview {
     ContentView()
 }
+
